@@ -58,8 +58,10 @@ Get the next 20 active users:
 
 
 Look in `test.js` for examples of how to call other methods. Note that
-the calls to `start();` and `stop();` are needed for qunit, but you
-should ignore those when calling the api. 
+the calls to `start();` and `stop();` are only needed for qunit. You
+should be able to call methods in crowd.js the same way that they're
+called in test.js (but remember to leave out the calls to `start()`
+and `stop()`).
 
 # Run Tests
 
