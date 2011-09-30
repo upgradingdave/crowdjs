@@ -26,7 +26,7 @@ function crowd(options){
      * Settings 
      * ====================*/
     var settings = {
-	    crowdRestUrl: "http://hitrc-collaborative.org/crowd22/rest/usermanagement/latest",
+	    crowdRestUrl: "/crowd/rest/usermanagement/latest",
 	    crowdAppUsername: "REPLACE WITH crowd app username",
 	    crowdAppPassword: "REPLACE WITH crowd app password",
 	    defaultMaxResults: 10
