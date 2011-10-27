@@ -287,6 +287,30 @@ function crowd(options){
 		}, opt_options));
 	},
 
+        /*
+         * Send user an email with link to reset password
+         */
+        emailResetPassword: function(username, opt_options){
+	    this.crowdRequest(
+                $.extend (
+		    {
+		        url: settings.crowdRestUrl+'/user/mail/password?username='+username,
+		        type: 'post'
+		    }, opt_options));
+	},
+
+        /*
+         * Send user an email that contains all usernames for a given email. 
+         */
+        emailUsernames: function(email, opt_options){
+	    this.crowdRequest(
+                $.extend (
+		    {
+		        url: settings.crowdRestUrl+'/user/mail/usernames?email='+email,
+		        type: 'post'
+		    }, opt_options));
+	},
+
 	/**
 	 * Convenience method for making jqery ajax call
 	 */

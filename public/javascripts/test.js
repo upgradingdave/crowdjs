@@ -22,8 +22,8 @@
 
 var client = crowd(
     { crowdRestUrl: "/crowd22/rest/usermanagement/latest", 
-      crowdAppUsername: "crowd-app-username",
-      crowdAppPassword: "crowd-app-password"
+      crowdAppUsername: "your-crowd-app-username",
+      crowdAppPassword: "your-crowd-app-password"
     });
 
 /*------------------------------------------------------------
@@ -331,4 +331,44 @@ test("add group, then get user groups, then remove user from group",
          getUserGroups(tstUsrName, 0);
          addUserToGroup(tstUsrName, tstGroup.name);
      });
+
+module("email-tests");
+
+test("email user a reset password",
+     function(){
+         stop();
+         client.emailResetPassword(
+             'valid-username', 
+             {
+                 complete: function(jqXHR, textStatus){ 
+                     equal(jqXHR.status, 204);
+		     start(); 
+                 },
+                 error: function(jqXHR, textStatus, errorThrown){
+                     notEqual(textStatus, "error", "Make sure we don't get any errors: "
+                              +errorThrown);
+                     start();
+                 }
+             });         
+     });
+
+test("send email with usernames for given email",
+     function(){
+         stop();
+         client.emailUsernames(
+             'valid-email@test.com', 
+             {
+                 complete: function(jqXHR, textStatus){ 
+                     equal(jqXHR.status, 204);
+		     start(); 
+                 },
+                 error: function(jqXHR, textStatus, errorThrown){
+                     notEqual(textStatus, "error", "Make sure we don't get any errors: "
+                              +errorThrown);
+                     start();
+                 }
+             });         
+     });
+
+
 
